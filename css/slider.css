@@ -1,0 +1,17 @@
+.slider {
+    display: flex;
+    overflow-x: hidden;
+}
+
+.slide {
+    width: 15%;
+    margin: auto 5%;
+    height: 100%;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 20vh;
+}

@@ -7,6 +7,10 @@
 // Scripts
 // 
 
+let sliderContainer = document.getElementById('slider-container');
+let sliderScrollWidth = sliderContainer.scrollWidth - sliderContainer.clientWidth;
+
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
@@ -51,4 +55,33 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    //autoscroll
+    let toRight = true;
+    self.setInterval(() => {
+        if (toRight) {
+            if (sliderContainer.scrollLeft === sliderScrollWidth) {
+                toRight = false;
+            }
+        }
+        else {
+            if (sliderContainer.scrollLeft === 0) {
+                toRight = true;
+            }
+        }
+
+        if (toRight){
+            sliderContainer.scrollTo(sliderContainer.scrollLeft + 1, 0);
+        }
+        else {
+            sliderContainer.scrollTo(sliderContainer.scrollLeft - 1, 0);
+        }
+
+        
+      }, 15);
+
 });
+
+window.onresize = () => {
+    sliderContainer = document.getElementById('slider-container');
+    sliderScrollWidth = sliderContainer.scrollWidth - sliderContainer.clientWidth;
+}
